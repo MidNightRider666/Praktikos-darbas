@@ -1,0 +1,38 @@
+POST http://localhost:3000/auth/register
+Content-Type: application/json
+
+{
+  "full_name": "Tomas Yesman",  
+  "email": "asus@email.com",
+  "password": "verysecret125",
+  "confirmPassword": "verysecret125"
+}
+
+### 
+
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+  "email": "asus@email.com",
+  "password": "verysecret125"
+}
+
+###  verysecret125, verysecret123
+
+GET http://localhost:3000/accounts/4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiaWF0IjoxNjQ3NDYwNjQ4LCJleHAiOjE2NDc0NjQyNDh9.txMmMHuHt0nQd_PsZVfvspvF9dEENWEJqXtIbvhmjzo
+
+###
+POST http://localhost:3000/accounts/post
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiaWF0IjoxNjQ3NTM4NjE2LCJleHAiOjE2NDc1NDIyMTZ9.eDCAWKcvwg188ISBZKeiUhsAtvDxTG5aF_n6IFXjBkQ
+
+{
+  "group_id" : 1,
+  "user_id": 9
+}
+
+### group_id , amount, description
+GET http://localhost:3000/bills/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiaWF0IjoxNjQ3NTAyNDgxLCJleHAiOjE2NDc1MDYwODF9.4E2sQY1EoqeylMEwZHQBuLLDU7lO0zrnp2Lmc6w5VZQ
