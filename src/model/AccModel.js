@@ -19,7 +19,6 @@ async function GetAccByUserAndGroups(userId) {
       await conn.close();
       return Acc;
     } catch (error) {
-      console.log(error);
       return false;
     }
   }
@@ -34,7 +33,6 @@ async function GetAccByUserAndGroups(userId) {
       await conn.close();
       return insertResult;
     } catch (error) {
-      console.log('insertUser ===', error);
       return false;
     }
   }

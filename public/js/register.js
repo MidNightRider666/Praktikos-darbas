@@ -20,7 +20,6 @@ formEl.addEventListener('submit', (event) => {
 });
 
 async function RegisterUser(RegisterUserData) {
-  console.log('we are tryng to register with===', RegisterUserData);
   const resp = await fetch(`${BASE_URL}/auth/register`, {
     method: 'POST',
     headers: {
@@ -29,7 +28,6 @@ async function RegisterUser(RegisterUserData) {
     body: JSON.stringify(RegisterUserData),
   });
   const respinJS = await resp.json();
-  console.log('respinJS===', respinJS);
   if (respinJS.success === false) {
     handleErrors(respinJS.error);
   }
@@ -43,7 +41,6 @@ async function handleErrors(errorArray) {
   errorArray.forEach((err) => {
     alertEl.innerHTML += `<p style="color:#ff1a1a">${err.message}</p>`;
     document.body.prepend(alertEl);
-    console.log('err===', err);
   });
   setTimeout(() => {
     alertEl.remove();

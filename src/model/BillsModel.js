@@ -13,11 +13,10 @@ async function GetBillsByGroupID(id) {
     LEFT JOIN ${tablename2}
     ON bills.group_id = groups.id
     WHERE group_id = ? `;
-    const [posts] = await conn.query(sql, [id]);
+    const [bills] = await conn.query(sql, [id]);
     await conn.close();
-    return posts;
+    return bills;
   } catch (error) {
-    console.log(error);
     return false;
   }
 }
@@ -27,11 +26,10 @@ async function PostBils(NewBillsData) {
       const { group_id , amount, description } = NewBillsData;
       const conn = await mysql.createConnection(dbConfig);
       const sql = `INSERT INTO ${tableName} (group_id , amount, description ) VALUES (?, ?, ?)`;
-      const [addArticleResult] = await conn.execute(sql, [group_id , amount, description ]);
+      const [addBillsResult] = await conn.execute(sql, [group_id , amount, description ]);
       await conn.close();
-      return addArticleResult;
+      return addBillsResult;
     } catch (error) {
-      console.log('addArticleResult ', error);
       return false;
     }
   }

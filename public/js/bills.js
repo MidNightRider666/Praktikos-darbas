@@ -16,7 +16,6 @@ async function loggout() {
     window.location.reload('index.html');
     const resp = localStorage.removeItem('login_token');
     const atsJs = await resp.json();
-    console.log('atsJs ===', atsJs);
     if (atsJs.success) {
       window.location.reload('index.html');
     }
@@ -32,7 +31,6 @@ async function GetBills() {
     headers: { Authorization: `Bearer ${token}` },
   });
   const dataInJs = await resp.json();
-  console.log('jsData===', dataInJs);
   if (dataInJs.success === false) {
     alert('This is restricted area for non registered users, redirecting....')
     window.location.replace('index.html');
@@ -64,14 +62,6 @@ function renderbills(billsArray) {
     Billel.append(singleGroup);
   });
 }
-
-// const query = window.location.search;
-// if(query) {
-//   const groupFromQuery = query.split('=')[1];
-//   console.log('groupFromQuery===', groupFromQuery);
-// //   formEl.elements.group.value = groupFromQuery;
-// }
-
 formEl.addEventListener('submit', (event) => {
   event.preventDefault();
   const query = window.location.search;
@@ -83,7 +73,6 @@ formEl.addEventListener('submit', (event) => {
     amount: amount.value,
     group_id: group_id,
   };
-  console.log('creating post ===', createPost);
   createNewBill(createPost);
 });
 
@@ -91,7 +80,6 @@ async function createNewBill(NewBillData) {
   const CreateConfirm = confirm('Create this tutorial?');
   if (CreateConfirm) {
     const token = localStorage.getItem('login_token');
-    console.log('creating ' + NewBillData);
     if (token === null) throw new Error('token not found');
     const resp = await fetch(`${BASE_URL}/bills/post`, {
       method: 'POST',
@@ -102,7 +90,6 @@ async function createNewBill(NewBillData) {
       body: JSON.stringify(NewBillData),
     });
     const atsJs = await resp.json();
-    console.log('atsJs ===', atsJs);
     if (atsJs.success === true) {
       handleSuccess();
     } else {
@@ -127,7 +114,6 @@ async function handleErrors(errorArray) {
   errorArray.forEach((err) => {
     alertEl.innerHTML += `<p>${err.message}</p>`;
     document.body.prepend(alertEl);
-    console.log('err===', err);
   });
   formEl.reset();
 }

@@ -16,7 +16,6 @@ async function loging(req, res) {
     const { email, password } = req.body;
 
     const findResults = await findUserWithEmail(email);
-    console.log('findResults===', findResults);
     if (findResults === false) return failResponce(res);
     if (!findResults.length) return failResponce(res, 'Login failed. Invalid Email and Password combination');
     const UserObj = findResults[0];
@@ -28,9 +27,6 @@ async function loging(req, res) {
     successResponce(res, token);
 }
 
-
-
-// 'Login failed. Invalid Email and Password combination'
 module.exports = {
     registering,
     loging

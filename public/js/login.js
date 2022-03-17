@@ -10,17 +10,14 @@ if (query) {
 
 formEl.addEventListener('submit', (event) => {
   event.preventDefault();
-  //   console.log('js controls');
   const loginUserData = {
     email: formEl.elements.email.value,
     password: formEl.elements.password.value,
   };
-  console.log('loginUser===', loginUserData);
 
   loginUser(loginUserData);
 });
 async function loginUser(loginUserData) {
-  console.log('we are trying to login with ===', loginUserData);
   const resp = await fetch(`${BASE_URL}/auth/login`, {
     method: 'POST',
     headers: {
@@ -29,7 +26,6 @@ async function loginUser(loginUserData) {
     body: JSON.stringify(loginUserData),
   });
   const respinJS = await resp.json();
-  console.log('respinJS===', respinJS);
   if (respinJS.success === false) {
     handleErrors(respinJS.error);
   }
@@ -40,13 +36,11 @@ async function loginUser(loginUserData) {
 }
 
 async function handleErrors(errorArray) {
-  // if() {}
   const alertEl = document.createElement('h4');
   alertEl.className = 'alert';
   errorArray.forEach((err) => {
     alertEl.innerHTML += `<p style="color:#ff1a1a">${err.message}</p>`;
     document.body.prepend(alertEl);
-    console.log('err===', err);
   });
   setTimeout(() => {
     alertEl.remove();

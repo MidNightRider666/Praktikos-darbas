@@ -17,7 +17,6 @@ async function loggout() {
     window.location.reload('index.html');
     const resp = localStorage.removeItem('login_token');
     const atsJs = await resp.json();
-    console.log('atsJs ===', atsJs);
     if (atsJs.success) {
       window.location.reload('index.html');
     }
@@ -31,8 +30,6 @@ async function GetGroups() {
     headers: { Authorization: `Bearer ${token}` },
   });
   const dataInJs = await resp.json();
-
-  console.log('jsData===', dataInJs);
   if (dataInJs.success === false) {
     alert('This is restricted area for non registered users, redirecting....')
     window.location.replace('index.html');
@@ -85,7 +82,6 @@ formEl.addEventListener('submit', (event) => {
   const createPost = {
     group_id: group_id.value,
   };
-  console.log('creating post ===', createPost);
   createNewGroup(createPost);
 });
 
@@ -93,7 +89,6 @@ async function createNewGroup(NewBillData) {
   const CreateConfirm = confirm('Create this group?');
   if (CreateConfirm) {
     const token = localStorage.getItem('login_token');
-    console.log('creating ' + NewBillData);
     if (token === null) throw new Error('token not found');
     const resp = await fetch(`${BASE_URL}/accounts/post`, {
       method: 'POST',
@@ -104,7 +99,6 @@ async function createNewGroup(NewBillData) {
       body: JSON.stringify(NewBillData),
     });
     const atsJs = await resp.json();
-    console.log('atsJs ===', atsJs);
     if (atsJs.success === true) {
       handleSuccess();
     } else {
@@ -129,7 +123,6 @@ async function handleErrors(errorArray) {
   errorArray.forEach((err) => {
     alertEl.innerHTML += `<p>${err.message}</p>`;
     document.body.prepend(alertEl);
-    console.log('err===', err);
   });
   formEl.reset();
 }
