@@ -31,7 +31,7 @@ async function GetGroups() {
   });
   const dataInJs = await resp.json();
   if (dataInJs.success === false) {
-    alert('This is restricted area for non registered users, redirecting....')
+    alert('This is restricted area for non registered users, redirecting....');
     window.location.replace('index.html');
   }
   renderGroups(dataInJs.data);

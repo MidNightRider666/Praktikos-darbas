@@ -22,20 +22,23 @@ async function GetBillsByGroupID(id) {
 }
 
 async function PostBils(NewBillsData) {
-    try {
-      const { group_id , amount, description } = NewBillsData;
-      const conn = await mysql.createConnection(dbConfig);
-      const sql = `INSERT INTO ${tableName} (group_id , amount, description ) VALUES (?, ?, ?)`;
-      const [addBillsResult] = await conn.execute(sql, [group_id , amount, description ]);
-      await conn.close();
-      return addBillsResult;
-    } catch (error) {
-      return false;
-    }
+  try {
+    const { group_id, amount, description } = NewBillsData;
+    const conn = await mysql.createConnection(dbConfig);
+    const sql = `INSERT INTO ${tableName} (group_id , amount, description ) VALUES (?, ?, ?)`;
+    const [addBillsResult] = await conn.execute(sql, [
+      group_id,
+      amount,
+      description,
+    ]);
+    await conn.close();
+    return addBillsResult;
+  } catch (error) {
+    return false;
   }
-
+}
 
 module.exports = {
   GetBillsByGroupID,
-  PostBils
+  PostBils,
 };

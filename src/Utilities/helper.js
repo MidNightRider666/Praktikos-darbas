@@ -1,6 +1,6 @@
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const {jwt_secret} = require('../dbConfig')
+const { jwt_secret } = require('../dbConfig');
 
 function HidePass(plainPassword) {
   return bcrypt.hashSync(plainPassword, 10);
