@@ -11,7 +11,7 @@ function LoggoutFromWeb() {
 }
 
 async function loggout() {
-  const loggoutConfirm = confirm('are you sure you want to loggout?');
+  const loggoutConfirm = confirm('Are you sure you want to loggout?');
   if (loggoutConfirm) {
     window.location.reload('index.html');
     const resp = localStorage.removeItem('login_token');
@@ -100,7 +100,7 @@ async function createNewBill(NewBillData) {
 function handleSuccess() {
   const alertEl = document.createElement('h4');
   alertEl.className = 'alert';
-  alertEl.textContent = 'Sveikiname postas sukurtas';
+  alertEl.textContent = 'Congratulations, the bill has been created';
   document.body.prepend(alertEl);
   setTimeout(() => {
     alertEl.remove();

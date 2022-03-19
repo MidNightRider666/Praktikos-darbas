@@ -109,7 +109,7 @@ async function createNewGroup(NewBillData) {
 function handleSuccess() {
   const alertEl = document.createElement('h4');
   alertEl.className = 'alert';
-  alertEl.textContent = 'Sveikiname postas sukurtas';
+  alertEl.textContent = 'Congratulations, the group has been created';
   document.body.prepend(alertEl);
   setTimeout(() => {
     alertEl.remove();

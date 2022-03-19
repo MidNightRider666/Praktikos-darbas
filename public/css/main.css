@@ -134,6 +134,7 @@ section {
   width: 50%;
   background-color: aliceblue;
   padding: 40px 70px;
+  color: green;
   top: 50px;
   left: 50%;
   transform: translateX(-50%);
