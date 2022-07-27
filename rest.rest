@@ -20,8 +20,8 @@ Content-Type: application/json
 
 ###  verysecret125, verysecret123
 
-GET http://localhost:3000/accounts/4
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiaWF0IjoxNjQ3NDYwNjQ4LCJleHAiOjE2NDc0NjQyNDh9.txMmMHuHt0nQd_PsZVfvspvF9dEENWEJqXtIbvhmjzo
+GET http://localhost:3000/accounts/5
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NywiaWF0IjoxNjUzMzM4NzQwLCJleHAiOjE2NTMzNDIzNDB9.JdT8hMBh-rYuotcWaUDWQC1j-vrpHH7JPffqXYZkhCI
 
 ###
 POST http://localhost:3000/accounts/post

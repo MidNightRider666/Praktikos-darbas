@@ -77,7 +77,7 @@ formEl.addEventListener('submit', (event) => {
 });
 
 async function createNewBill(NewBillData) {
-  const CreateConfirm = confirm('Create this tutorial?');
+  const CreateConfirm = confirm('Create this bill?');
   if (CreateConfirm) {
     const token = localStorage.getItem('login_token');
     if (token === null) throw new Error('token not found');
